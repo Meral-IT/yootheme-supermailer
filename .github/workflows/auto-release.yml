@@ -1,3 +1,11 @@
+/*
+ * Filename: f:\Projekte\yootheme-supermailer\.github\workflows\auto-release.yml
+ * Path: f:\Projekte\yootheme-supermailer\.github\workflows
+ * Created Date: Friday, August 2nd 2024, 10:34:56 pm
+ * Author: Necati Meral https://meral.cloud
+ * 
+ * Copyright (c) 2024 Meral IT
+ */
 name: Release Extensions
 
 on:
@@ -28,7 +36,7 @@ jobs:
       if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
       with:
         fetch-depth: 0
-        token: ${{ secrets.GITHUB_TOKEN }}
+        token: ${{ secrets.PAT }}
 
     - uses: actions/checkout@v4
       if: github.event_name == 'pull_request'
