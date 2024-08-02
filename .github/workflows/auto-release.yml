@@ -12,7 +12,7 @@ on:
     workflow_dispatch:
 
 jobs:
-  logic-nodes:
+  extensions:
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -46,7 +46,7 @@ jobs:
     # Build the solution
     - name: Build
       run: |
-        build/build.sh
+        ./build/build.sh
 
     - name: Release
       uses: softprops/action-gh-release@v2
