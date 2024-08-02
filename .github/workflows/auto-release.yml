@@ -4,14 +4,18 @@ on:
     push:
         branches:
         - main
-        tags:
-          - 'v*.*.*'
 
     pull_request:
         branches:
         - main
 
     workflow_dispatch:
+        inputs:
+            doRelease:
+                description: 'Should a release be done?'
+                required: true
+                type: boolean
+                default: false
 
 defaults:
   run:
@@ -51,14 +55,14 @@ jobs:
         ./build/build.ps1 -Version $Version
 
     - uses: stefanzweifel/git-auto-commit-action@v5
-      if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
+      if: inputs.doRelease == true && (github.event_name == 'push' || github.event_name == 'workflow_dispatch')
       with:
         commit_message: "Bump version to ${{ steps.version.outputs.semVer }}"
         tagging_message: "v${{ steps.version.outputs.semVer }}"
 
     - name: Release
       uses: softprops/action-gh-release@v2
-      if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
+      if: inputs.doRelease == true && (github.event_name == 'push' || github.event_name == 'workflow_dispatch')
       with:
         name: ${{ steps.version.outputs.semVer }}
         tag_name: v${{ steps.version.outputs.semVer }}
