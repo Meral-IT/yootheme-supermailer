@@ -63,16 +63,21 @@ $Hash = $Hash.Hash.ToLowerInvariant()
 $UpdatesFile = Join-Path $WorkingDirectory 'update.xml'
 $UpdatesContent = [xml](Get-Content $UpdatesFile)
 $Updates = $UpdatesContent.SelectNodes('/updates/update');
+$IsNewUpdate = $False
 
 # Check if update already exists
-foreach ($Update in $Updates) {
-    if ($Update.version -eq $Version) {
-        Write-Host "Update $Version already exists."
-        exit 1
+foreach ($ExistingUpdate in $Updates) {
+    if ($ExistingUpdate.version -eq $Version) {
+        
+        Write-Host "Update $Version already exists; updating entry"
+        $Update = $ExistingUpdate
     }
 }
 
-$Update = $Updates[-1].CloneNode($true)
+if ($Null -eq $Update) {
+    $Update = $Updates[-1].CloneNode($true)
+    $IsNewUpdate = $True
+}
 
 $Update.SelectSingleNode('version').InnerText = $Version
 $Update.SelectSingleNode('sha512').InnerText = $Hash
@@ -83,5 +88,7 @@ $NameNode.InnerText = $NameNode.InnerText -replace '(\d+\.\d+\.\d+)', $Version
 $DownloadUrlNode = $Update.SelectSingleNode('downloads/downloadurl');
 $DownloadUrlNode.InnerText = $DownloadUrlNode.InnerText -replace '(\d+\.\d+\.\d+)', $Version
 
-$UpdatesContent.SelectSingleNode('/updates').AppendChild($Update) > $null
+if ($IsNewUpdate) {
+    $UpdatesContent.SelectSingleNode('/updates').AppendChild($Update) > $null
+}
 $UpdatesContent.Save($UpdatesFile)
