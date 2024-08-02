@@ -84,4 +84,25 @@
     <php_minimum>8.0.0</php_minimum>
     <targetplatform name="joomla" version="[45].[01234]" />
   </update>
+  <update>
+    <name>SuperMailer for YOOtheme Pro 1.0.4</name>
+    <description>System - SuperMailer for YOOtheme Pro Plugin</description>
+    <element>yoosupermailer</element>
+    <type>plugin</type>
+    <folder>system</folder>
+    <client>site</client>
+    <version>1.0.4</version>
+    <infourl title="SuperMailer for YOOtheme Pro Plugin">https://github.com/NecatiMeral/yootheme-supermailer</infourl>
+    <downloads>
+      <downloadurl type="full" format="zip">https://github.com/NecatiMeral/yootheme-supermailer/releases/download/v1.0.4/plg_system_yoosupermailer.zip</downloadurl>
+    </downloads>
+    <sha512>c8e3957406f43d2c2372996b9558fa740947ba2b1bd5cce601b654bff467446a1197664ed960838e2817131949ba1f2b7835e41e89d351ce161db8ce7aa0f52c</sha512>
+    <tags>
+      <tag>stable</tag>
+    </tags>
+    <maintainer>Necati Meral</maintainer>
+    <maintainerurl>https://github.com/NecatiMeral</maintainerurl>
+    <php_minimum>8.0.0</php_minimum>
+    <targetplatform name="joomla" version="4.[01234]" />
+  </update>
 </updates>

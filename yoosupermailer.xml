@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-
+﻿<?xml version="1.0" encoding="utf-8"?>
 <!--
   @package   Meral YOOtheme Pro SuperMailer
   @author    Necati Meral https://meral.cloud
@@ -7,43 +6,42 @@
   @copyright Copyright (C) Meral IT, DE
   @license   http://www.gnu.org/licenses/gpl.html GNU/GPL
 -->
-
 <extension type="plugin" group="system" method="upgrade">
-    <name>PLG_SYSTEM_MERAL_SUPERMAILER</name>
-    <description>PLG_SYSTEM_MERAL_SUPERMAILER_DESC</description>
-    <author>Necati Meral</author>
-    <authorEmail>hallo@meral.cloud</authorEmail>
-    <authorUrl>https://meral.cloud</authorUrl>
-    <copyright>Copyright (C) Meral IT</copyright>
-    <license>GNU General Public License version 3, see LICENSE</license>
-    <creationDate>August 01, 2024</creationDate>
-    <version>1.0.0</version>
-    <element>yoosupermailer</element>
-    <scriptfile>install.php</scriptfile>
-    <files>
-        <folder>language</folder>
-        <folder>modules</folder>
-        <folder>sql</folder>
-        <filename plugin="yoosupermailer">yoosupermailer.php</filename>
-        <filename>autoload.php</filename>
-        <filename>autoload_classmap.php</filename>
-        <filename>index.html</filename>
-    </files>
-    <languages>
-        <language tag="en-GB">language/en-GB/en-GB.plg_system_yoosupermailer.sys.ini</language>
-        <language tag="de-DE">language/de-DE/de-DE.plg_system_yoosupermailer.sys.ini</language>
-    </languages>
-    <install>
-        <sql>
-            <file driver="mysql" charset="utf8">sql/mysql/install.mysql.utf8.sql</file>
-        </sql>
-    </install>
-    <uninstall>
-        <sql>
-            <file driver="mysql" charset="utf8">sql/mysql/uninstall.mysql.utf8.sql</file>
-        </sql>
-    </uninstall>
-    <updateservers>
-        <server type="extension" priority="1" name="YOOtheme Pro SuperMailer Update Site">https://raw.githubusercontent.com/NecatiMeral/yootheme-supermailer/main/update.xml</server>
-    </updateservers>
+  <name>PLG_SYSTEM_MERAL_SUPERMAILER</name>
+  <description>PLG_SYSTEM_MERAL_SUPERMAILER_DESC</description>
+  <author>Necati Meral</author>
+  <authorEmail>hallo@meral.cloud</authorEmail>
+  <authorUrl>https://meral.cloud</authorUrl>
+  <copyright>Copyright (C) Meral IT</copyright>
+  <license>GNU General Public License version 3, see LICENSE</license>
+  <creationDate>August 01, 2024</creationDate>
+  <version>1.0.4</version>
+  <element>yoosupermailer</element>
+  <scriptfile>install.php</scriptfile>
+  <files>
+    <folder>language</folder>
+    <folder>modules</folder>
+    <folder>sql</folder>
+    <filename plugin="yoosupermailer">yoosupermailer.php</filename>
+    <filename>autoload.php</filename>
+    <filename>autoload_classmap.php</filename>
+    <filename>index.html</filename>
+  </files>
+  <languages>
+    <language tag="en-GB">language/en-GB/en-GB.plg_system_yoosupermailer.sys.ini</language>
+    <language tag="de-DE">language/de-DE/de-DE.plg_system_yoosupermailer.sys.ini</language>
+  </languages>
+  <install>
+    <sql>
+      <file driver="mysql" charset="utf8">sql/mysql/install.mysql.utf8.sql</file>
+    </sql>
+  </install>
+  <uninstall>
+    <sql>
+      <file driver="mysql" charset="utf8">sql/mysql/uninstall.mysql.utf8.sql</file>
+    </sql>
+  </uninstall>
+  <updateservers>
+    <server type="extension" priority="1" name="YOOtheme Pro SuperMailer Update Site">https://raw.githubusercontent.com/NecatiMeral/yootheme-supermailer/main/update.xml</server>
+  </updateservers>
 </extension>
