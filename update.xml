@@ -1,4 +1,4 @@
-<?xml version="1.0" ?>
+<?xml version="1.0"?>
 <updates>
     <update>
         <name>SuperMailer for YOOtheme Pro 1.0.0</name>
@@ -19,6 +19,6 @@
         <maintainer>Necati Meral</maintainer>
         <maintainerurl>https://github.com/NecatiMeral</maintainerurl>
         <php_minimum>8.0.0</php_minimum>
-        <targetplatform name="joomla" version="4.[01234]"/>
+        <targetplatform name="joomla" version="4.[01234]" />
     </update>
 </updates>
