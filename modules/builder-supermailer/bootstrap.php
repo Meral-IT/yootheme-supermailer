@@ -38,6 +38,12 @@ return [
             NewsletterController::class . '@confirm',
             ['csrf' => false, 'allowed' => true],
         ],
+        [
+            'get',
+            '/theme/supermailer/unsubscribe',
+            NewsletterController::class . '@unsubscribe',
+            ['csrf' => false, 'allowed' => true],
+        ],
     ],
 
     'extend' => [

@@ -69,7 +69,8 @@ class SuperMailerProvider extends AbstractProvider
 
             $this->repository->confirmSubscription($id);
 
-            $this->addSuperMailerRegistration(
+            $this->dispatchSuperMailer(
+                SupermailerAction::Subscribe,
                 $id,
                 $email,
                 $provider['supermailer_recipient'],
@@ -78,6 +79,24 @@ class SuperMailerProvider extends AbstractProvider
         }
 
         return true;
+    }
+
+    public function unsubscribe(string $emailOrId)
+    {
+        $subscription = $this->repository->getSubscription($emailOrId);
+        if ($subscription) {
+            if ($this->repository->removeSubscription($subscription->id)) {
+                $this->dispatchSuperMailer(
+                    SupermailerAction::Unsubscribe,
+                    $subscription->id,
+                    $subscription->email,
+                    $subscription->recipient,
+                    $subscription->payload
+                );
+            }
+        }
+
+        $this->redirect();
     }
 
     /**
@@ -94,7 +113,8 @@ class SuperMailerProvider extends AbstractProvider
             $this->repository->confirmSubscription($id);
             $subscription = $this->repository->getSubscription($id);
 
-            $this->addSuperMailerRegistration(
+            $this->dispatchSuperMailer(
+                SupermailerAction::Subscribe,
                 $id,
                 $subscription->email,
                 $subscription->recipient,
@@ -142,8 +162,13 @@ class SuperMailerProvider extends AbstractProvider
         $mailer->send();
     }
 
-    private function addSuperMailerRegistration($id, $email, $recipient, $data)
-    {
+    private function dispatchSuperMailer(
+        SuperMailerAction $action,
+        string $id,
+        string $email,
+        string $recipient,
+        array $data
+    ) {
         $body = "EMail: $email\n";
         $body .= "DatumZeit: " . date('m/j/y H:i:s') . "\n";
         $body .= "GUID: " . $id . "\n";
@@ -152,10 +177,11 @@ class SuperMailerProvider extends AbstractProvider
         if ($name) {
             $body .= "Name: $name\n";
         }
+        $subject = $action === SuperMailerAction::Subscribe ? 'subscribe' : 'unsubscribe';
 
         $mailer = $this->getMailer();
         $mailer->addRecipient($recipient);
-        $mailer->setSubject('subscribe');
+        $mailer->setSubject($subject);
         $mailer->setBody($body);
         $mailer->send();
     }
@@ -171,4 +197,10 @@ class SuperMailerProvider extends AbstractProvider
         }
         return null;
     }
+}
+
+enum SuperMailerAction
+{
+    case Subscribe;
+    case Unsubscribe;
 }

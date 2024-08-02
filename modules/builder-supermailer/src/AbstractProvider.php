@@ -45,5 +45,14 @@ abstract class AbstractProvider
      *
      * @return bool
      */
+    abstract public function unsubscribe(string $emailOrId);
+
+    /**
+     * @param string $emailOrId
+     *
+     * @throws \Exception
+     *
+     * @return bool
+     */
     abstract public function confirm($emailOrId);
 }
