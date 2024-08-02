@@ -53,7 +53,7 @@ $XmlContent.SelectSingleNode('/extension/version').InnerText = $Version
 $Xmlcontent.Save($XmlFile)
 
 # Create archive
-Compress-Archive -Path "$TempDirectory/" -DestinationPath $DistDirectory -Force
+Compress-Archive -Path "$TempDirectory/*" -DestinationPath $DistDirectory -Force
 
 # Calculate Hash
 $Hash = Get-FileHash -Path $DistDirectory -Algorithm SHA512
