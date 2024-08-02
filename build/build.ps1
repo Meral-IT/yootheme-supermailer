@@ -55,6 +55,8 @@ foreach ($Element in $WhitelistedElements) {
 # Create archive
 Compress-Archive -Path "$TempDirectory/*" -DestinationPath $DistDirectory -Force
 
+Remove-Item $TempDirectory -Recurse -Force > $null
+
 # Calculate Hash
 $Hash = Get-FileHash -Path $DistDirectory -Algorithm SHA512
 $Hash = $Hash.Hash.ToLowerInvariant()

@@ -122,6 +122,28 @@ class Repository
 		return $db->loadResult();
 	}
 
+	/**
+	 * Delete an item from the database
+	 *
+	 * @param string $id The id of the item to delete
+	 *
+	 * @throws \RuntimeException
+	 *
+	 * @return boolean
+	 */
+	function removeSubscription(string $id): bool
+	{
+		$db = $this->getDatabase();
+		$query = $db->getQuery(true)
+			->delete($db->quoteName('#__supermailer'))
+			->where(
+				"upper(" . $db->quoteName('id') . ') = upper(' . $db->quote($id) . ')'
+			);
+
+		$db->setQuery($query);
+		return $db->execute();
+	}
+
 	function getSubscription($emailOrGuid)
 	{
 		if ($this->getExistingGuid($emailOrGuid) == null) {

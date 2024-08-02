@@ -97,6 +97,30 @@ class NewsletterController
         }
     }
 
+    public function unsubscribe(Request $request, Response $response)
+    {
+        try {
+
+            $request->abortIf(
+                !($idOrEmail = $request->getParam('guid')),
+                400,
+                'Missing data',
+            );
+
+            $providerName = $request->getParam('provider', 'supermailer');
+
+            $request->abortIf(
+                !($provider = $this->getProvider($providerName)),
+                400,
+                'Invalid provider',
+            );
+
+            $provider->unsubscribe($idOrEmail);
+        } catch (\Exception $e) {
+            return $response->withJson($e->getMessage(), 400);
+        }
+    }
+
     public function getHash(string $data): string
     {
         return hash('fnv132', hash_hmac('sha1', $data, $this->secret));
