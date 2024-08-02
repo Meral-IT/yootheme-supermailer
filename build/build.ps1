@@ -34,6 +34,12 @@ $DistDirectory = Join-Path $WorkingDirectory 'build' 'plg_system_yoosupermailer.
 # Update current working directory
 Set-Location $WorkingDirectory > $null
 
+# Update version in XML file
+$XmlFile = Join-Path $WorkingDirectory "$ExtensionElement.xml"
+$XmlContent = [xml](Get-Content $XmlFile)
+$XmlContent.SelectSingleNode('/extension/version').InnerText = $Version
+$Xmlcontent.Save($XmlFile)
+
 # Reset temporary directory
 if (Test-Path $TempDirectory -PathType Container) {
     Remove-Item $TempDirectory -Recurse -Force > $null
@@ -45,12 +51,6 @@ New-Item -ItemType Directory -Path $TempDirectory -Force > $null
 foreach ($Element in $WhitelistedElements) {
     Copy-Item -Path $Element -Destination $TempDirectory -Recurse -Force
 }
-
-# Update version in XML file
-$XmlFile = Join-Path $TempDirectory "$ExtensionElement.xml"
-$XmlContent = [xml](Get-Content $XmlFile)
-$XmlContent.SelectSingleNode('/extension/version').InnerText = $Version
-$Xmlcontent.Save($XmlFile)
 
 # Create archive
 Compress-Archive -Path "$TempDirectory/*" -DestinationPath $DistDirectory -Force
