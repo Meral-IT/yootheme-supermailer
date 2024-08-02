@@ -82,6 +82,6 @@
     <maintainer>Necati Meral</maintainer>
     <maintainerurl>https://github.com/NecatiMeral</maintainerurl>
     <php_minimum>8.0.0</php_minimum>
-    <targetplatform name="joomla" version="4.[01234]" />
+    <targetplatform name="joomla" version="[45].[01234]" />
   </update>
 </updates>
