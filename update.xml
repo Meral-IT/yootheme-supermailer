@@ -10,7 +10,7 @@
     <version>1.0.0</version>
     <infourl title="SuperMailer for YOOtheme Pro Plugin">https://github.com/NecatiMeral/yootheme-supermailer</infourl>
     <downloads>
-      <downloadurl type="full" format="zip">https://github.com/NecatiMeral/yootheme-supermailer/releases/download/1.0.0/plg_system_yoosupermailer.zip</downloadurl>
+      <downloadurl type="full" format="zip">https://github.com/NecatiMeral/yootheme-supermailer/releases/download/v1.0.0/plg_system_yoosupermailer.zip</downloadurl>
     </downloads>
     <sha512>1305772a7172e7eb2e03ae8a3b2a384d74770ec22972fe2b2f5d57695d607f4d24a9e1a9eae2c44a9ef138c5940e3091b42c6ff24950f270bd83685d1a2066ae</sha512>
     <tags>
@@ -31,7 +31,7 @@
     <version>1.0.1</version>
     <infourl title="SuperMailer for YOOtheme Pro Plugin">https://github.com/NecatiMeral/yootheme-supermailer</infourl>
     <downloads>
-      <downloadurl type="full" format="zip">https://github.com/NecatiMeral/yootheme-supermailer/releases/download/1.0.1/plg_system_yoosupermailer.zip</downloadurl>
+      <downloadurl type="full" format="zip">https://github.com/NecatiMeral/yootheme-supermailer/releases/download/v1.0.1/plg_system_yoosupermailer.zip</downloadurl>
     </downloads>
     <sha512>1fcb17fe9fff1d0a5c896d028e0669648e89ecd543b18e46676e5228710ad348b7a09c2dc54091f5fe939b984ff6e098df3304b8e005a65994a313eb441a3878</sha512>
     <tags>
@@ -52,7 +52,7 @@
     <version>1.0.2</version>
     <infourl title="SuperMailer for YOOtheme Pro Plugin">https://github.com/NecatiMeral/yootheme-supermailer</infourl>
     <downloads>
-      <downloadurl type="full" format="zip">https://github.com/NecatiMeral/yootheme-supermailer/releases/download/1.0.2/plg_system_yoosupermailer.zip</downloadurl>
+      <downloadurl type="full" format="zip">https://github.com/NecatiMeral/yootheme-supermailer/releases/download/v1.0.2/plg_system_yoosupermailer.zip</downloadurl>
     </downloads>
     <sha512>23a4ff1d5df5c1b3660ee619a65a81dbe7080bfc5c3d09cb0b31334a2ec6b7647ede009f7f523ba487ed74343d8dcc8187a6f75ea9004a2b8cb167d1bceb8c61</sha512>
     <tags>
