@@ -19,7 +19,7 @@
     <maintainer>Necati Meral</maintainer>
     <maintainerurl>https://github.com/NecatiMeral</maintainerurl>
     <php_minimum>8.0.0</php_minimum>
-    <targetplatform name="joomla" version="45.[01234]" />
+    <targetplatform name="joomla" version="[45].[01234]" />
   </update>
   <update>
     <name>SuperMailer for YOOtheme Pro 1.0.1</name>
@@ -40,7 +40,7 @@
     <maintainer>Necati Meral</maintainer>
     <maintainerurl>https://github.com/NecatiMeral</maintainerurl>
     <php_minimum>8.0.0</php_minimum>
-    <targetplatform name="joomla" version="45.[01234]" />
+    <targetplatform name="joomla" version="[45].[01234]" />
   </update>
   <update>
     <name>SuperMailer for YOOtheme Pro 1.0.2</name>
@@ -61,7 +61,7 @@
     <maintainer>Necati Meral</maintainer>
     <maintainerurl>https://github.com/NecatiMeral</maintainerurl>
     <php_minimum>8.0.0</php_minimum>
-    <targetplatform name="joomla" version="45.[01234]" />
+    <targetplatform name="joomla" version="[45].[01234]" />
   </update>
   <update>
     <name>SuperMailer for YOOtheme Pro 1.0.3</name>
@@ -103,7 +103,7 @@
     <maintainer>Necati Meral</maintainer>
     <maintainerurl>https://github.com/NecatiMeral</maintainerurl>
     <php_minimum>8.0.0</php_minimum>
-    <targetplatform name="joomla" version="45.[01234]" />
+    <targetplatform name="joomla" version="[45].[01234]" />
   </update>
   <update>
     <name>SuperMailer for YOOtheme Pro 1.0.5</name>
