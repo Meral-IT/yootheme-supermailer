@@ -22,7 +22,7 @@ jobs:
       if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
       with:
         fetch-depth: 0
-        token: ${{ secrets.PUSH_GITHUB_TOKEN }}
+        token: ${{ secrets.GITHUB_TOKEN }}
 
     - uses: actions/checkout@v4
       if: github.event_name == 'pull_request'
