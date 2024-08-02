@@ -15,7 +15,7 @@
   <copyright>Copyright (C) Meral IT</copyright>
   <license>GNU General Public License version 3, see LICENSE</license>
   <creationDate>August 01, 2024</creationDate>
-  <version>1.0.4</version>
+  <version>1.0.5</version>
   <element>yoosupermailer</element>
   <scriptfile>install.php</scriptfile>
   <files>
