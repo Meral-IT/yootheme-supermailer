@@ -29,13 +29,13 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
-      if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
+      if: inputs.doRelease == true
       with:
         fetch-depth: 0
         token: ${{ secrets.PAT }}
 
     - uses: actions/checkout@v4
-      if: github.event_name == 'pull_request'
+      if: inputs.doRelease != true
       with:
         fetch-depth: 0
 
@@ -54,7 +54,8 @@ jobs:
         $Version = "${{ steps.version.outputs.semVer }}"
         ./build/build.ps1 -Version $Version
 
-    - uses: stefanzweifel/git-auto-commit-action@v5
+    - name: Commit changes
+      uses: stefanzweifel/git-auto-commit-action@v5
       if: inputs.doRelease == true && (github.event_name == 'push' || github.event_name == 'workflow_dispatch')
       with:
         commit_message: "Bump version to ${{ steps.version.outputs.semVer }}"
