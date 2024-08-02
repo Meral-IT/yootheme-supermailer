@@ -1,0 +1,53 @@
+name: Release Logic Nodes
+
+on:
+  push:
+    tags:
+    - "v*.*.*"
+
+jobs:
+  logic-nodes:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
+
+    - name: Install GitVersion
+      uses: gittools/actions/gitversion/setup@v3.0.0
+      with:
+        versionSpec: '5.x'
+
+    - name: Determine Version
+      id: version
+      uses: gittools/actions/gitversion/execute@v3.0.0
+      with:
+        useConfigFile: true
+
+    # Set version
+    - name: Set Version
+      run: |
+        sed -i -e "s/\(<sha512>\).*\(<\/sha512>\)/<sha512>${{ steps.version.outputs.majorMinorPatch }}<\/sha512>/g" yoosupermailer.xml
+
+    # Build the solution
+    - name: Build
+      run: |
+        build/build.sh
+
+    - name: Release
+      uses: softprops/action-gh-release@v2
+      if: startsWith(github.ref, 'refs/tags/')
+      with:
+        files: build/*.zip
+        generate_release_notes: true
+
+    # Upload the packages: https://github.com/marketplace/actions/upload-a-build-artifact
+    - name: Upload build artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: Extensions
+        path: build/*.zip

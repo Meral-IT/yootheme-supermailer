@@ -1,0 +1,364 @@
+{
+    "@import": "./element.php",
+    "name": "supermailer",
+    "title": "SuperMailer",
+    "group": "Meral IT",
+    "icon": "${url:images/icon.svg}",
+    "iconSmall": "${url:images/iconSmall.svg}",
+    "element": true,
+    "width": 500,
+    "defaults": {
+        "layout": "grid",
+        "show_name": true,
+        "label_first_name": "First name",
+        "label_last_name": "Last name",
+        "label_email": "Email address",
+        "label_button": "Subscribe",
+        "provider": {
+            "name": "supermailer",
+            "after_submit": "message",
+            "message": "You've been subscribed successfully.",
+            "redirect": ""
+        },
+        "supermailer": {
+            "double_optin": true,
+            "supermailer.recipient": "news@domain.com",
+            "supermailer.double_optin_subject": "Ihre Anmeldung zu unserem Newsletter",
+            "supermailer.double_optin_content": "Sie haben sich für unseren Newsletter angemeldet.\n\nBitte bestätigen Sie Ihre E-Mail-Adresse mit einem Klick auf den folgenden Link: [BESTAETIGUNGSLINK]\n\nWenn Sie sich nicht für den Newsletter angemeldet haben, können Sie diese E-Mail ignorieren.",
+            "supermailer.double_optin_expiration": 30
+        },
+        "button_mode": "button",
+        "button_style": "default",
+        "button_icon": "mail"
+    },
+    "templates": {
+        "render": "./templates/template.php"
+    },
+    "fields": {
+        "provider.name": {
+            "label": "Provider",
+            "type": "select",
+            "options": {
+                "SuperMailer": "supermailer"
+            }
+        },
+        "supermailer.double_optin": {
+            "label": "Double opt-in",
+            "type": "checkbox",
+            "text": "Use double opt-in.",
+            "show": "provider.name == 'supermailer'"
+        },
+        "supermailer.recipient": {
+            "label": "Anmeldungs-Empfänger",
+            "type": "text",
+            "description": "Geben Sie die E-Mail-Adresse Ihres POP3/IMAP Postfachs an.",
+            "attrs": {
+                "placeholder": "news@domain.com"
+            },
+            "show": "provider.name == 'supermailer'"
+        },
+        "supermailer.double_optin_subject": {
+            "label": "Betreff der Bestätigungs-E-Mail",
+            "type": "text",
+            "description": "Geben Sie den Betreff der Bestaetigungs-E-Mail an",
+            "attrs": {
+                "placeholder": "Ihre Anmeldung zu unserem Newsletter"
+            }
+        },
+        "supermailer.double_optin_content": {
+            "label": "Inhalt der Bestätigungs-Mail",
+            "type": "textarea",
+            "description": "Geben Sie die Datei mit dem Text für die Bestaetigungs-E-Mail an, die der neue Abonnent geschickt bekommt. Dies muss eine Textdatei sein, kein HTML! Beachten Sie, der E-Mail-Text muss den Platzhalter [BESTAETIGUNGSLINK] enthalten, damit der  Abonnent in der E-Mail auch den Link für die Aufnahme in den Newsletter anklicken kann.",
+            "attrs": {
+                "rows": 10
+            }
+        },
+        "supermailer.double_optin_expiration": {
+            "label": "Double-Opt-In Interval",
+            "type": "number",
+            "description": "Anmeldungen werden für die Anzahl an Tagen für das Double-Opt-In-Verfahren gespeichert. Bestätigungen nach diesem Intervall schlagen fehl und müssen neu angemeldet werden.",
+            "attrs": {
+                "placeholder": "30"
+            }
+        },
+        "provider.after_submit": {
+            "label": "After Submit",
+            "description": "Select whether a message will be shown or the site will be redirected after clicking the subscribe button.",
+            "type": "select",
+            "options": {
+                "Show message": "message",
+                "Redirect": "redirect"
+            }
+        },
+        "provider.message": {
+            "label": "Message",
+            "description": "Message shown to the user after submit.",
+            "type": "textarea",
+            "attrs": {
+                "rows": 4
+            },
+            "show": "provider.after_submit == 'message'"
+        },
+        "provider.redirect": {
+            "label": "Link",
+            "description": "Link to redirect to after submit.",
+            "type": "link",
+            "filePicker": false,
+            "show": "provider.after_submit == 'redirect'"
+        },
+        "layout": {
+            "label": "Layout",
+            "description": "Define the layout of the form.",
+            "type": "select",
+            "options": {
+                "Grid": "grid",
+                "Stacked": "stacked",
+                "Stacked (Name fields as grid)": "stacked-name"
+            }
+        },
+        "show_name": {
+            "type": "checkbox",
+            "text": "Show name fields"
+        },
+        "gap": {
+            "label": "Gap",
+            "description": "Set the size of the gap between the grid columns.",
+            "type": "select",
+            "options": {
+                "Small": "small",
+                "Medium": "medium",
+                "Default": ""
+            }
+        },
+        "form_size": {
+            "label": "Size",
+            "description": "Select the form size.",
+            "type": "select",
+            "options": {
+                "Small": "small",
+                "Default": "",
+                "Large": "large"
+            }
+        },
+        "form_style": {
+            "label": "Style",
+            "description": "Select the form style.",
+            "type": "select",
+            "options": {
+                "Default": "",
+                "Blank": "blank"
+            }
+        },
+        "label_email": {
+            "label": "Email",
+            "attrs": {
+                "placeholder": "Email address"
+            }
+        },
+        "label_button": {
+            "label": "Button",
+            "attrs": {
+                "placeholder": "Submit"
+            }
+        },
+        "label_first_name": {
+            "label": "First name",
+            "attrs": {
+                "placeholder": "First name"
+            },
+            "enable": "show_name"
+        },
+        "label_last_name": {
+            "label": "Last name",
+            "attrs": {
+                "placeholder": "Last name"
+            },
+            "enable": "show_name"
+        },
+        "button_mode": {
+            "label": "Mode",
+            "description": "Select whether a button or a clickable icon inside the email input is shown.",
+            "type": "select",
+            "options": {
+                "Button": "button",
+                "Icon": "icon"
+            }
+        },
+        "button_style": {
+            "label": "Style",
+            "description": "Set the button style.",
+            "type": "select",
+            "options": {
+                "Default": "default",
+                "Primary": "primary",
+                "Secondary": "secondary",
+                "Danger": "danger",
+                "Text": "text"
+            },
+            "enable": "button_mode == 'button'"
+        },
+        "button_fullwidth": {
+            "type": "checkbox",
+            "text": "Full width button",
+            "enable": "button_mode == 'button' && layout != 'grid'"
+        },
+        "button_margin": {
+            "label": "Extra Margin",
+            "description": "Add extra margin to the button.",
+            "type": "select",
+            "options": {
+                "None": "",
+                "Small": "small",
+                "Medium": "default"
+            },
+            "enable": "button_mode == 'button' && show_name"
+        },
+        "button_icon": {
+            "label": "Icon",
+            "description": "Click on the pencil to pick an icon from the icon library.",
+            "type": "icon",
+            "enable": "button_mode == 'icon'"
+        },
+        "position": "${builder.position}",
+        "position_left": "${builder.position_left}",
+        "position_right": "${builder.position_right}",
+        "position_top": "${builder.position_top}",
+        "position_bottom": "${builder.position_bottom}",
+        "position_z_index": "${builder.position_z_index}",
+        "blend": "${builder.blend}",
+        "margin": "${builder.margin}",
+        "margin_remove_top": "${builder.margin_remove_top}",
+        "margin_remove_bottom": "${builder.margin_remove_bottom}",
+        "maxwidth": "${builder.maxwidth}",
+        "maxwidth_breakpoint": "${builder.maxwidth_breakpoint}",
+        "block_align": "${builder.block_align}",
+        "block_align_breakpoint": "${builder.block_align_breakpoint}",
+        "block_align_fallback": "${builder.block_align_fallback}",
+        "text_align": "${builder.text_align_justify}",
+        "text_align_breakpoint": "${builder.text_align_breakpoint}",
+        "text_align_fallback": "${builder.text_align_justify_fallback}",
+        "animation": "${builder.animation}",
+        "_parallax_button": "${builder._parallax_button}",
+        "visibility": "${builder.visibility}",
+        "name": "${builder.name}",
+        "status": "${builder.status}",
+        "id": "${builder.id}",
+        "class": "${builder.cls}",
+        "attributes": "${builder.attrs}",
+        "css": {
+            "label": "CSS",
+            "description": "Enter your own custom CSS. The following selectors will be prefixed automatically for this element: <code>.el-element</code>, <code>.el-input</code>, <code>.el-button</code>",
+            "type": "editor",
+            "editor": "code",
+            "mode": "css",
+            "attrs": {
+                "debounce": 500,
+                "hints": [
+                    ".el-element",
+                    ".el-input",
+                    ".el-button"
+                ]
+            }
+        },
+        "transform": "${builder.transform}"
+    },
+    "fieldset": {
+        "default": {
+            "type": "tabs",
+            "fields": [
+                {
+                    "title": "Content",
+                    "fields": [
+                        "provider.name",
+                        "supermailer.double_optin",
+                        "supermailer.recipient",
+                        "supermailer.double_optin_subject",
+                        "supermailer.double_optin_content",
+                        "supermailer.double_optin_expiration",
+                        "provider.after_submit",
+                        "provider.message",
+                        "provider.redirect"
+                    ]
+                },
+                {
+                    "title": "Settings",
+                    "fields": [
+                        {
+                            "label": "Form",
+                            "type": "group",
+                            "divider": true,
+                            "fields": [
+                                "layout",
+                                "show_name",
+                                "gap",
+                                "form_size",
+                                "form_style"
+                            ]
+                        },
+                        {
+                            "label": "Labels",
+                            "type": "group",
+                            "divider": true,
+                            "fields": [
+                                "label_email",
+                                "label_button",
+                                "label_first_name",
+                                "label_last_name"
+                            ]
+                        },
+                        {
+                            "label": "Button",
+                            "type": "group",
+                            "divider": true,
+                            "fields": [
+                                "button_mode",
+                                "button_style",
+                                "button_fullwidth",
+                                "button_margin",
+                                "button_icon"
+                            ]
+                        },
+                        {
+                            "label": "General",
+                            "type": "group",
+                            "fields": [
+                                "position",
+                                "position_left",
+                                "position_right",
+                                "position_top",
+                                "position_bottom",
+                                "position_z_index",
+                                "blend",
+                                "margin",
+                                "margin_remove_top",
+                                "margin_remove_bottom",
+                                "maxwidth",
+                                "maxwidth_breakpoint",
+                                "block_align",
+                                "block_align_breakpoint",
+                                "block_align_fallback",
+                                "text_align",
+                                "text_align_breakpoint",
+                                "text_align_fallback",
+                                "animation",
+                                "_parallax_button",
+                                "visibility"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "title": "Advanced",
+                    "fields": [
+                        "name",
+                        "status",
+                        "id",
+                        "class",
+                        "css",
+                        "transform"
+                    ]
+                }
+            ]
+        }
+    }
+}
