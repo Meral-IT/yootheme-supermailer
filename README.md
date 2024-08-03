@@ -30,7 +30,6 @@ This plugin adds more elements to the element library of the YOOtheme Pro page b
 - download the latest release package from the [releases page](https://github.com/NecatiMeral/yootheme-supermailer/releases) (*Assets 🠖 Source code (zip) or Source code (tar.gz)*)
 - install it via the Joomla! extensions manager
 - access the YOOtheme Pro Page Builder, the custom elements should now be available
-- you can select which elements should or should not be loaded in YOOtheme Pro at *Settings > Herzog Dupont*
 
 ## Issues
 
