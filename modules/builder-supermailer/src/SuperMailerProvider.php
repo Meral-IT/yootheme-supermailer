@@ -53,7 +53,7 @@ class SuperMailerProvider extends AbstractProvider
             $id = $this->repository->addSubscription(
                 $email,
                 $data,
-                $provider['double_optin_recipient'],
+                $provider['recipient'],
                 $expiration
             );
 
@@ -63,7 +63,7 @@ class SuperMailerProvider extends AbstractProvider
             $id = $this->repository->addSubscription(
                 $email,
                 $data,
-                $provider['double_optin_recipient'],
+                $provider['recipient'],
                 null
             );
 
