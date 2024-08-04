@@ -73,7 +73,7 @@ class SuperMailerProvider extends AbstractProvider
                 SupermailerAction::Subscribe,
                 $id,
                 $email,
-                $provider['supermailer_recipient'],
+                $provider['recipient'],
                 $data
             );
         }
