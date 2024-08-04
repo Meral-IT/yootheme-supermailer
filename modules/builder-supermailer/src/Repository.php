@@ -99,7 +99,7 @@ class Repository
 		$db = $this->getDatabase();
 		$query = $db->getQuery(true)
 			->delete($db->quoteName('#__supermailer'))
-			->where($db->quoteName('expiration') . ' <= CURRENT_TIMESTAMP()');
+			->where($db->quoteName('expiration') . ' <= CURRENT_TIMESTAMP() and ' . $db->quoteName('state') . ' = 0');
 		$db->setQuery($query);
 		$db->execute();
 	}
