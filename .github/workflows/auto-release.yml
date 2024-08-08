@@ -1,21 +1,21 @@
 name: Release Extensions
 
 on:
-    push:
-        branches:
-        - main
+  push:
+    branches:
+      - main
 
-    pull_request:
-        branches:
-        - main
+  pull_request:
+    branches:
+      - main
 
-    workflow_dispatch:
-        inputs:
-            doRelease:
-                description: 'Should a release be done?'
-                required: true
-                type: boolean
-                default: false
+  workflow_dispatch:
+    inputs:
+      doRelease:
+        description: "Should a release be done?"
+        required: true
+        type: boolean
+        default: false
 
 defaults:
   run:
@@ -28,51 +28,51 @@ jobs:
       contents: write
 
     steps:
-    - uses: actions/checkout@v4
-      if: inputs.doRelease == true
-      with:
-        fetch-depth: 0
-        token: ${{ secrets.PAT }}
+      - uses: actions/checkout@v4
+        if: inputs.doRelease == true
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.PAT }}
 
-    - uses: actions/checkout@v4
-      if: inputs.doRelease != true
-      with:
-        fetch-depth: 0
+      - uses: actions/checkout@v4
+        if: inputs.doRelease != true
+        with:
+          fetch-depth: 0
 
-    - name: Install GitVersion
-      uses: gittools/actions/gitversion/setup@v3.0.0
+      - name: Install GitVersion
+        uses: gittools/actions/gitversion/setup@v3.0.0
 
-    - name: Determine Version
-      id: version
-      uses: gittools/actions/gitversion/execute@v3.0.0
-      with:
-        useConfigFile: true
+      - name: Determine Version
+        id: version
+        uses: gittools/actions/gitversion/execute@v3.0.0
+        with:
+          useConfigFile: true
 
-    # Set version
-    - name: Build
-      run: |
-        $Version = "${{ steps.version.outputs.semVer }}"
-        ./build/build.ps1 -Version $Version
+      # Set version
+      - name: Build
+        run: |
+          $Version = "${{ steps.version.outputs.semVer }}"
+          ./build/build.ps1 -Version $Version
 
-    - name: Commit changes
-      uses: stefanzweifel/git-auto-commit-action@v5
-      if: inputs.doRelease == true && (github.event_name == 'push' || github.event_name == 'workflow_dispatch')
-      with:
-        commit_message: "Bump version to ${{ steps.version.outputs.semVer }}"
-        tagging_message: "v${{ steps.version.outputs.semVer }}"
+      - name: Commit changes
+        uses: stefanzweifel/git-auto-commit-action@v5
+        if: inputs.doRelease == true && (github.event_name == 'push' || github.event_name == 'workflow_dispatch')
+        with:
+          commit_message: "[skip ci] Bump version to ${{ steps.version.outputs.semVer }}"
+          tagging_message: "v${{ steps.version.outputs.semVer }}"
 
-    - name: Release
-      uses: softprops/action-gh-release@v2
-      if: inputs.doRelease == true && (github.event_name == 'push' || github.event_name == 'workflow_dispatch')
-      with:
-        name: ${{ steps.version.outputs.semVer }}
-        tag_name: v${{ steps.version.outputs.semVer }}
-        files: build/*.zip
-        generate_release_notes: true
+      - name: Release
+        uses: softprops/action-gh-release@v2
+        if: inputs.doRelease == true && (github.event_name == 'push' || github.event_name == 'workflow_dispatch')
+        with:
+          name: ${{ steps.version.outputs.semVer }}
+          tag_name: v${{ steps.version.outputs.semVer }}
+          files: build/*.zip
+          generate_release_notes: true
 
-    # Upload the packages: https://github.com/marketplace/actions/upload-a-build-artifact
-    - name: Upload build artifacts
-      uses: actions/upload-artifact@v4
-      with:
-        name: Extensions
-        path: build/*.zip
+      # Upload the packages: https://github.com/marketplace/actions/upload-a-build-artifact
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: Extensions
+          path: build/*.zip
