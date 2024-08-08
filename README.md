@@ -1,5 +1,7 @@
 # Meral-IT SuperMailer Element for YOOtheme Pro Joomla! Plugin
 
+![Logo](./docs/jed-logo.jpg)
+
 Meral-IT SuperMailer Element for YOOtheme Pro is an extension for the [YOOtheme Pro page builder](https://yootheme.com/page-builder) which adds more elements to the element library.
 
 Copyright (C) 2024 Meral-IT.
