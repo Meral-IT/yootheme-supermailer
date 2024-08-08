@@ -15,7 +15,7 @@
   <copyright>Copyright (C) Meral IT</copyright>
   <license>GNU General Public License version 3, see LICENSE</license>
   <creationDate>August 01, 2024</creationDate>
-  <version>1.0.6</version>
+  <version>1.0.7</version>
   <element>yoosupermailer</element>
   <scriptfile>install.php</scriptfile>
   <files>
@@ -42,6 +42,6 @@
     </sql>
   </uninstall>
   <updateservers>
-    <server type="extension" priority="1" name="YOOtheme Pro SuperMailer Update Site">https://raw.githubusercontent.com/NecatiMeral/yootheme-supermailer/main/update.xml</server>
+    <server type="extension" priority="1" name="YOOtheme Pro SuperMailer Update Site">https://raw.githubusercontent.com/Meral-IT/yootheme-supermailer/main/update.xml</server>
   </updateservers>
 </extension>
