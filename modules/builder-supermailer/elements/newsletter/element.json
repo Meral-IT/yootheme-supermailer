@@ -51,7 +51,7 @@
         "supermailer.recipient": {
             "label": "Registration recipient",
             "type": "text",
-            "description": "Enter the e-mail address of your POP3/IMAP mailbox which is monitored by SuperMailer. This is the e-mail address to which the double opt-in confirmation e-mail will be sent.",
+            "description": "Enter the e-mail address of your POP3/IMAP mailbox which is monitored by SuperMailer. This is the e-mail address to which the double opt-in confirmation or unsubscribe e-mail will be sent.",
             "attrs": {
                 "placeholder": "news@domain.com"
             },
