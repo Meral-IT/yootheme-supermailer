@@ -32,6 +32,7 @@ jobs:
         if: inputs.doRelease == true
         with:
           fetch-depth: 0
+          ssh-key: ${{ secrets.RELEASE_PUSH_KEY }}
           token: ${{ secrets.PAT }}
 
       - uses: actions/checkout@v4
