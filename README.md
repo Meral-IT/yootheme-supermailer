@@ -27,6 +27,10 @@ This plugin adds more elements to the element library of the YOOtheme Pro page b
 
 - SuperMailer Element: Display a Newsletter form to integrate with the SuperMailer Newsletter system.
 
+## Prerequisites
+
+This plugin requires a pre-existing setup of the [SuperMailer](https://www.supermailer.de/) software. Please note that this plugin is not affiliated with or endorsed by the creators of the SuperMailer software.
+
 ## Installation
 
 - download the latest release package from the [releases page](https://github.com/NecatiMeral/yootheme-supermailer/releases) (*Assets 🠖 Source code (zip) or Source code (tar.gz)*)

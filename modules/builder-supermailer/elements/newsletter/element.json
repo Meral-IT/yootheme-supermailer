@@ -23,8 +23,8 @@
         "supermailer": {
             "double_optin": true,
             "supermailer.recipient": "news@domain.com",
-            "supermailer.double_optin_subject": "Ihre Anmeldung zu unserem Newsletter",
-            "supermailer.double_optin_content": "Sie haben sich für unseren Newsletter angemeldet.\n\nBitte bestätigen Sie Ihre E-Mail-Adresse mit einem Klick auf den folgenden Link: [BESTAETIGUNGSLINK]\n\nWenn Sie sich nicht für den Newsletter angemeldet haben, können Sie diese E-Mail ignorieren.",
+            "supermailer.double_optin_subject": "Your registration for our newsletter",
+            "supermailer.double_optin_content": "You have subscribed to our newsletter.\n\nPlease confirm your e-mail address by clicking on the following link: [CONFIRMLINK]\n\nIf you have not signed up for the newsletter, you can ignore this email.",
             "supermailer.double_optin_expiration": 30
         },
         "button_mode": "button",
@@ -49,26 +49,26 @@
             "show": "provider.name == 'supermailer'"
         },
         "supermailer.recipient": {
-            "label": "Anmeldungs-Empfänger",
+            "label": "Registration recipient",
             "type": "text",
-            "description": "Geben Sie die E-Mail-Adresse Ihres POP3/IMAP Postfachs an.",
+            "description": "Enter the e-mail address of your POP3/IMAP mailbox which is monitored by SuperMailer. This is the e-mail address to which the double opt-in confirmation or unsubscribe e-mail will be sent.",
             "attrs": {
                 "placeholder": "news@domain.com"
             },
             "show": "provider.name == 'supermailer'"
         },
         "supermailer.double_optin_subject": {
-            "label": "Betreff der Bestätigungs-E-Mail",
+            "label": "Subject of the confirmation e-mail",
             "type": "text",
-            "description": "Geben Sie den Betreff der Bestaetigungs-E-Mail an",
+            "description": "Enter the subject of the confirmation e-mail",
             "attrs": {
-                "placeholder": "Ihre Anmeldung zu unserem Newsletter"
+                "placeholder": "Your registration for our newsletter"
             }
         },
         "supermailer.double_optin_content": {
-            "label": "Inhalt der Bestätigungs-Mail",
+            "label": "Content of the confirmation e-mail",
             "type": "textarea",
-            "description": "Geben Sie die Datei mit dem Text für die Bestaetigungs-E-Mail an, die der neue Abonnent geschickt bekommt. Dies muss eine Textdatei sein, kein HTML! Beachten Sie, der E-Mail-Text muss den Platzhalter [BESTAETIGUNGSLINK] enthalten, damit der  Abonnent in der E-Mail auch den Link für die Aufnahme in den Newsletter anklicken kann.",
+            "description": "Enter the file with the text for the confirmation e-mail that the new subscriber will receive. This must be a text file, not HTML! Please note that the e-mail text must contain the placeholder [CONFIRMLINK] so that the subscriber can also click on the link in the e-mail to be included in the newsletter.",
             "attrs": {
                 "rows": 10
             }
@@ -76,7 +76,7 @@
         "supermailer.double_optin_expiration": {
             "label": "Double-Opt-In Interval",
             "type": "number",
-            "description": "Anmeldungen werden für die Anzahl an Tagen für das Double-Opt-In-Verfahren gespeichert. Bestätigungen nach diesem Intervall schlagen fehl und müssen neu angemeldet werden.",
+            "description": "Registrations are stored for the number of days for the double opt-in procedure. Confirmations after this interval will fail and must be re-registered.",
             "attrs": {
                 "placeholder": "30"
             }
