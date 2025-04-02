@@ -153,7 +153,9 @@ class SuperMailerProvider extends AbstractProvider
             'provider' => $provider['name'],
         ]);
 
+        // Previously, the placeholder was [BESTAETIGUNGSLINK], german
         $body = str_replace("[BESTAETIGUNGSLINK]", $confirmUri, $provider['double_optin_content']);
+        $body = str_replace("[CONFIRMLINK]", $confirmUri, $provider['double_optin_content']);
 
         $mailer = $this->getMailer();
         $mailer->addRecipient($email);
